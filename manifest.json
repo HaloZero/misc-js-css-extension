@@ -1,0 +1,27 @@
+{
+  "name": "Misc stuff",
+  "manifest_version" : 2,
+  "version": "1.0.1",
+  "options_page": "options/options.html",
+  "description": "A series of misc small fixes, that require JS and CSS, in the extension store for syncing purposes",
+  "page_action": {
+    "default_icon": "misc_icon_16.png"
+  },
+  "icons": {
+    "16" : "misc_icon_16.png",
+    "48" : "misc_icon_48.png",
+    "128" : "misc_icon_128.png"
+  },
+  "permissions": [
+    "tabs",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "content_scripts": [
+  {
+      "matches" : ["*://www.facebook.com/*"],
+      "js" : ["jquery.js", "xdate.js", "facebook_event.js"],
+      "css" : ["facebook_event.css"]
+    }
+  ]
+}
