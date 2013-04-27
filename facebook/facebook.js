@@ -1,1 +1,1 @@
-alert("fuck you");
+$(".uiSideNav .count.uiSideNavCount").hide();
