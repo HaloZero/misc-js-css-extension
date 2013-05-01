@@ -19,12 +19,9 @@
   ],
   "content_scripts": [
   {
-    "matches" : ["*://www.facebook.com/*"],
-    "js" : ["utils/jquery.js", "utils/xdate.js", "facebook/facebook.js"]
-  },
-  {
-    "matches" : ["*://www.runkeeper.com/*"],
-    "js" : ["utils/jquery.js", "utils/xdate.js", "runkeeper/runkeeper.js"]
+    "matches" : ["*://www.facebook.com/*", "*://*.runkeeper.com/*"],
+    "js" : ["utils/jquery.js", "utils/xdate.js", "facebook/facebook.js", "runkeeper/runkeeper.js"],
+    "css" : ["facebook/facebook.css"]
   }
   ]
 }
