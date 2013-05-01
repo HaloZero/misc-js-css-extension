@@ -1,7 +1,7 @@
 {
   "name": "Misc stuff",
   "manifest_version" : 2,
-  "version": "1.0.3",
+  "version": "1.0.4",
   "options_page": "options/options.html",
   "description": "A series of misc small fixes, that require JS and CSS, in the extension store for syncing purposes",
   "page_action": {
@@ -19,9 +19,12 @@
   ],
   "content_scripts": [
   {
-      "matches" : ["*://www.facebook.com/*"],
-      "js" : ["jquery.js", "xdate.js", "facebook_event.js"],
-      "css" : ["facebook_event.css"]
-    }
+    "matches" : ["*://www.facebook.com/*"],
+    "js" : ["utils/jquery.js", "utils/xdate.js", "facebook/facebook.js"]
+  },
+  {
+    "matches" : ["*://www.runkeeper.com/*"],
+    "js" : ["utils/jquery.js", "utils/xdate.js", "runkeeper/runkeeper.js"]
+  }
   ]
 }
