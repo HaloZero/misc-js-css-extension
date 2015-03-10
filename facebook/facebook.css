@@ -2,3 +2,4 @@
 
 .sideNavItem .countValue { display: none; }
 #fbNotificationsJewel .jewelCount { display: none; }
+#fbNotificationsJewel .jewelButton { background-position: 0 -886px;}
