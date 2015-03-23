@@ -19,9 +19,20 @@
   ],
   "content_scripts": [
   {
-    "matches" : ["*://www.facebook.com/*", "*://*.runkeeper.com/*", "*://*.instapaper.com/*"],
-    "js" : ["utils/jquery.js", "utils/xdate.js", "facebook/facebook.js", "runkeeper/runkeeper.js", "instapaper/instapaper.js"],
+    "matches" : ["*://www.facebook.com/*"],
+    "js" : ["utils/jquery.js", "facebook/facebook.js"],
     "css" : ["facebook/facebook.css"]
-  }
+  },
+  {
+    "matches" : ["*://*.runkeeper.com/*", "*://*.instapaper.com/*"],
+    "js" : ["utils/jquery.js", "runkeeper/runkeeper.js"],
+    "css" : []
+  },
+  {
+    "matches" : ["*://*.instapaper.com/*"],
+    "js" : ["utils/jquery.js", "instapaper/instapaper.js"],
+    "css" : []
+  },
+
   ]
 }
