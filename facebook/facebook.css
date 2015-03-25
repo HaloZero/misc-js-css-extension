@@ -2,4 +2,7 @@
 
 .sideNavItem .countValue { display: none; }
 #fbNotificationsJewel .jewelCount { display: none; }
-#fbNotificationsJewel .jewelButton { background-position: 0 -886px;}
+#fbNotificationsJewel .jewelButton { background-position: 0 -927px;}
+
+/* not sure if this 23kb will be there always */
+#sideNav ._23kb { display: none; }

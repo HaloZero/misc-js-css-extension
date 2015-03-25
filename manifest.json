@@ -1,7 +1,7 @@
 {
   "name": "Misc stuff",
   "manifest_version" : 2,
-  "version": "1.0.9",
+  "version": "1.0.10",
   "options_page": "options/options.html",
   "description": "A series of misc small fixes, that require JS and CSS, in the extension store for syncing purposes",
   "page_action": {
@@ -32,7 +32,7 @@
     "matches" : ["*://*.instapaper.com/*"],
     "js" : ["utils/jquery.js", "instapaper/instapaper.js"],
     "css" : []
-  },
+  }
 
   ]
 }
