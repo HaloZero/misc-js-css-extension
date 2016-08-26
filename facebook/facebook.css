@@ -2,11 +2,12 @@
 
 .sideNavItem .countValue { display: none; }
 #fbNotificationsJewel .jewelCount { display: none; }
-#fbNotificationsJewel .jewelButton {
-	background-image:url('chrome-extension://__MSG_@@extension_id__/images/fb-icons.png');
-	 background-position: 0 -983px;
-   background-size: 47px 1346px;
+#fbNotificationsJewel .jewelButton { 
+	background-image:url('chrome-extension://__MSG_@@extension_id__/images/fb-icons.png') !important;
+	 background-position: 0 -983px !important;
 }
 
 /* not sure if this 23kb will be there always */
 #sideNav ._23kb { display: none; }
+
+#pagelet_trending_tags_and_topics { display: none; }
