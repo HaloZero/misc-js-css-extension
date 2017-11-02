@@ -1,7 +1,7 @@
 {
   "name": "Misc stuff",
   "manifest_version" : 2,
-  "version": "1.0.15",
+  "version": "1.1.0",
   "options_page": "options/options.html",
   "description": "A series of misc small fixes, that require JS and CSS, in the extension store for syncing purposes",
   "page_action": {
@@ -14,6 +14,7 @@
   },
   "permissions": [
     "tabs",
+    "activeTab",
     "http://*/*",
     "https://*/*"
   ],
@@ -37,6 +38,14 @@
     "matches" : ["*://*.okcupid.com/*"],
     "js" : ["utils/jquery.js"],
     "css" : ["okcupid/okcupid.css"]
+  },
+  {
+    "matches" : ["*://*.thisamericanlife.org/*", "*://*.gimletmedia.com/*", 
+      "*://*.stuffyoushouldknow.com/*", "*://*.99percentinvisible.org/*", 
+      "*://*.thisiscriminal.com/*", "*://*.loveandradio.org/*", 
+      "*://*.radiolab.org/*"],
+    "js" : ["utils/jquery.js", "podcasts/podcast.js"],
+    "css" : []
   }
   ],
   "web_accessible_resources": [
