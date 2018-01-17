@@ -43,7 +43,7 @@ function createConfigurations() {
     var titles = document.querySelectorAll(".post-title");
 
     var finalString = "";
-    for (var i = 0; i < 5; i++) { 
+    for (var i = 0; i < 5; i++) {
       var label = labels[i].textContent.trim().replace("Episode ", "");
       var title = titles[i].textContent.trim();
       finalString += "## " + label + " " + title + "\n";
@@ -53,16 +53,16 @@ function createConfigurations() {
 
   addConfiguration('stuffyoushouldknow', '#archive-featured', function () {
     var finalString = '';
-    for (var i = 0; i < 5; i++) { 
-      finalString += "# " + document.querySelectorAll(".h4 a")[i].textContent.trim() + "\n\n"; 
-    } 
+    for (var i = 0; i < 5; i++) {
+      finalString += "# " + document.querySelectorAll(".h4 a")[i].textContent.trim() + "\n\n";
+    }
     copyTextToClipboard(finalString);
   });
 
   addConfiguration('gimletmedia', '#primary', function () {
     var finalString = '';
-    for (var i = 0; i < 5; i++) { 
-      finalString += document.querySelectorAll(".list__item .list__item__title a")[i].textContent.trim() + "\n"; 
+    for (var i = 0; i < 5; i++) {
+      finalString += document.querySelectorAll(".list__item .list__item__title a")[i].textContent.trim() + "\n";
     }
     copyTextToClipboard(finalString);
   });
@@ -74,13 +74,13 @@ function createConfigurations() {
       var label = labels[i].textContent.trim();
       finalString += "## " + label + "\n";
     }
-    copyTextToClipboard(finalString);  
+    copyTextToClipboard(finalString);
   });
 
-  addConfiguration('thisiscriminal', '#main', function () {
+  addConfiguration('thisiscriminal', '.episode-grid', function () {
     var finalString = ""
     var titles = document.querySelectorAll(".type-post .title h2 a")
-    for (var i = 0; i < 10; i++) { 
+    for (var i = 0; i < 10; i++) {
         var title = titles[i].textContent.trim().replace("Episode ", "")
         finalString += "## " + title + "\n"
     }
@@ -89,17 +89,17 @@ function createConfigurations() {
 
   addConfiguration('radiolab', '#series-main', function () {
     var finalString = ""
-    for (var i = 0; i < 5; i++) { 
-      finalString += "# " + $$(".series-item .title a")[i].textContent.trim() + "\n\n" 
-    } 
+    for (var i = 0; i < 5; i++) {
+      finalString += "# " + $$(".series-item .title a")[i].textContent.trim() + "\n\n"
+    }
     copyTextToClipboard(finalString);
   });
 
   addConfiguration('loveandradio', '.fourblog.blogger', function () {
     var finalString = ""
-    for (var i = 0; i < 5; i++) { 
-      finalString += "# " + $$(".fourblog h3 a")[i].textContent.trim() + "\n\n" 
-    } 
+    for (var i = 0; i < 5; i++) {
+      finalString += "# " + $$(".fourblog h3 a")[i].textContent.trim() + "\n\n"
+    }
     copyTextToClipboard(finalString);
   })
 }
