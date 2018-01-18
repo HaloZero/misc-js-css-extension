@@ -79,8 +79,8 @@ function createConfigurations() {
 
   addConfiguration('thisiscriminal', '.episode-grid', function () {
     var finalString = ""
-    var titles = document.querySelectorAll(".type-post .title h2 a")
-    for (var i = 0; i < 10; i++) {
+    var titles = document.querySelectorAll(".episode a:nth-child(2)")
+    for (var i = 0; i < 10; i++) { 
         var title = titles[i].textContent.trim().replace("Episode ", "")
         finalString += "## " + title + "\n"
     }
@@ -89,19 +89,42 @@ function createConfigurations() {
 
   addConfiguration('radiolab', '#series-main', function () {
     var finalString = ""
-    for (var i = 0; i < 5; i++) {
-      finalString += "# " + $$(".series-item .title a")[i].textContent.trim() + "\n\n"
+    for (var i = 0; i < 5; i++) { 
+      finalString += "# " + document.querySelectorAll(".series-item .title a")[i].textContent.trim() + "\n\n" 
     }
     copyTextToClipboard(finalString);
   });
 
   addConfiguration('loveandradio', '.fourblog.blogger', function () {
     var finalString = ""
-    for (var i = 0; i < 5; i++) {
-      finalString += "# " + $$(".fourblog h3 a")[i].textContent.trim() + "\n\n"
+    for (var i = 0; i < 5; i++) { 
+      finalString += "# " + document.querySelectorAll(".fourblog h3 a")[i].textContent.trim() + "\n\n" 
     }
     copyTextToClipboard(finalString);
   })
+
+  addConfiguration('lorepodcast', '.blog-list', function () {
+    var titles = document.querySelectorAll(".entry-title a")
+
+    var finalString = "";
+    for (var i = 0; i < 15; i++) { 
+      var title = titles[i].textContent.trim();
+      finalString += "## " + title + "\n";
+    }
+    copyTextToClipboard(finalString);
+  });
+
+  addConfiguration('imaginaryworldspodcast', '.wsb-navigation-rendered-top-level-menu', function() {
+    var titles = document.querySelectorAll(".wsb-navigation-rendered-top-level-menu a");
+
+    var finalString = "";
+    var length = titles.length
+    for (var i = 1; i < 5; i++) { 
+      var index = length - i;
+      var title = titles[index].textContent.trim();
+      finalString += "## " + title + "\n";
+    }
+  });
 }
 
 function copyTextToClipboard(text) {
@@ -130,8 +153,4 @@ function copyTextToClipboard(text) {
   }
 
   document.body.removeChild(textArea);
-}
-
-function RevisionistHistory(domain) {
-
 }
