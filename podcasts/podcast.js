@@ -67,8 +67,8 @@ function createConfigurations() {
     copyTextToClipboard(finalString);
   });
 
-  addConfiguration('americanlife', '#archive-episodes', function () {
-    var labels = document.querySelectorAll("#archive-episodes h3 a");
+  addConfiguration('americanlife', '#block-system-main', function () {
+    var labels = document.querySelectorAll(".content article h2 a");
     var finalString = '';
     for (var i = 0; i < labels.length; i++) {
       var label = labels[i].textContent.trim();
