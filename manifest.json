@@ -1,7 +1,7 @@
 {
   "name": "Misc stuff",
   "manifest_version" : 2,
-  "version": "1.1.0",
+  "version": "1.1.1",
   "options_page": "options/options.html",
   "description": "A series of misc small fixes, that require JS and CSS, in the extension store for syncing purposes",
   "page_action": {
@@ -42,12 +42,16 @@
   {
     "matches" : ["*://*.thisamericanlife.org/*", "*://*.gimletmedia.com/*", 
       "*://*.stuffyoushouldknow.com/*", "*://*.99percentinvisible.org/*", 
-      "*://*.thisiscriminal.com/*", "*://*.loveandradio.org/*", 
-      "*://*.radiolab.org/*"],
+      "*://*.thisiscriminal.com/*", "*://*.loveandradio.org/*", "*://*.lorepodcast.com/*",
+      "*://*.radiolab.org/*", "*://*.imaginaryworldspodcast.org/*"],
     "js" : ["utils/jquery.js", "podcasts/podcast.js"],
     "css" : []
-  }
-  ],
+  },
+  {
+    "matches" : ["*://*.wsj.com/*"],
+    "js" : ["utils/jquery.js", "wsj/wsj.js"],
+    "css" : []
+  }],
   "web_accessible_resources": [
     "images/*.png"
   ]
