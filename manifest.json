@@ -1,7 +1,7 @@
 {
   "name": "Misc stuff",
   "manifest_version" : 2,
-  "version": "1.1.1",
+  "version": "1.1.2",
   "options_page": "options/options.html",
   "description": "A series of misc small fixes, that require JS and CSS, in the extension store for syncing purposes",
   "page_action": {
@@ -40,8 +40,8 @@
     "css" : ["okcupid/okcupid.css"]
   },
   {
-    "matches" : ["*://*.thisamericanlife.org/*", "*://*.gimletmedia.com/*", 
-      "*://*.stuffyoushouldknow.com/*", "*://*.99percentinvisible.org/*", 
+    "matches" : ["*://*.thisamericanlife.org/*", "*://*.gimletmedia.com/*",
+      "*://*.stuffyoushouldknow.com/*", "*://*.99percentinvisible.org/*",
       "*://*.thisiscriminal.com/*", "*://*.loveandradio.org/*", "*://*.lorepodcast.com/*",
       "*://*.radiolab.org/*", "*://*.imaginaryworldspodcast.org/*"],
     "js" : ["utils/jquery.js", "podcasts/podcast.js"],
@@ -50,6 +50,11 @@
   {
     "matches" : ["*://*.wsj.com/*"],
     "js" : ["utils/jquery.js", "wsj/wsj.js"],
+    "css" : []
+  },
+  {
+    "matches" : ["*://*.myfitnesspal.com/*"],
+    "js" : ["utils/jquery.js", "myfitnesspal/myfitnesspal.js"],
     "css" : []
   }],
   "web_accessible_resources": [
