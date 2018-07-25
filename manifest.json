@@ -43,8 +43,13 @@
     "matches" : ["*://*.thisamericanlife.org/*", "*://*.gimletmedia.com/*",
       "*://*.stuffyoushouldknow.com/*", "*://*.99percentinvisible.org/*",
       "*://*.thisiscriminal.com/*", "*://*.loveandradio.org/*", "*://*.lorepodcast.com/*",
-      "*://*.radiolab.org/*", "*://*.imaginaryworldspodcast.org/*"],
+      "*://*.radiolab.org/*", "*://*.imaginaryworldspodcast.org/*", "*://*.wnycstudios.org/*"],
     "js" : ["utils/jquery.js", "podcasts/podcast.js"],
+    "css" : []
+  },
+  {
+    "matches" : ["https://www.pogdesign.co.uk/cat/show-select"],
+    "js" : ["utils/jquery.js", "tvcalendar/calendar.js"],
     "css" : []
   },
   {
