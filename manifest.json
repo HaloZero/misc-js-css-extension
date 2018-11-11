@@ -1,7 +1,7 @@
 {
   "name": "Misc stuff",
   "manifest_version" : 2,
-  "version": "1.1.2",
+  "version": "1.2.0",
   "options_page": "options/options.html",
   "description": "A series of misc small fixes, that require JS and CSS, in the extension store for syncing purposes",
   "page_action": {
@@ -60,7 +60,7 @@
   {
     "matches" : ["*://*.myfitnesspal.com/*"],
     "js" : ["utils/jquery.js", "myfitnesspal/myfitnesspal.js"],
-    "css" : []
+    "css" : ["myfitnesspal/myfitnesspal.css"]
   }],
   "web_accessible_resources": [
     "images/*.png"

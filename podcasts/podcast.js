@@ -46,7 +46,7 @@ function createConfigurations() {
     for (var i = 0; i < 5; i++) {
       var label = labels[i].textContent.trim().replace("Episode ", "");
       var title = titles[i].textContent.trim();
-      finalString += "## " + label + " " + title + "\n";
+      finalString += "#" + label + " " + title + "\n";
     }
     copyTextToClipboard(finalString);
   });
@@ -70,9 +70,9 @@ function createConfigurations() {
   addConfiguration('americanlife', '#block-system-main', function () {
     var labels = document.querySelectorAll(".content article h2 a");
     var finalString = '';
-    for (var i = 0; i < labels.length; i++) {
+    for (var i = 0; i < 5; i++) {
       var label = labels[i].textContent.trim();
-      finalString += "## " + label + "\n";
+      finalString += "# " + label + "\n";
     }
     copyTextToClipboard(finalString);
   });
@@ -80,9 +80,9 @@ function createConfigurations() {
   addConfiguration('thisiscriminal', '.episode-grid', function () {
     var finalString = ""
     var titles = document.querySelectorAll(".episode a:nth-child(2)")
-    for (var i = 0; i < 10; i++) { 
+    for (var i = 0; i < 5; i++) { 
         var title = titles[i].textContent.trim().replace("Episode ", "")
-        finalString += "## " + title + "\n"
+        finalString += "# " + title + "\n"
     }
     copyTextToClipboard(finalString);
   });
@@ -90,15 +90,17 @@ function createConfigurations() {
   addConfiguration('radiolab', '#series-main', function () {
     var finalString = ""
     for (var i = 0; i < 5; i++) { 
-      finalString += "# " + document.querySelectorAll(".series-item .title a")[i].textContent.trim() + "\n\n" 
+      finalString += "# " + document.querySelectorAll(".series-item .title a")[i].textContent.trim() + "\n\n";
     }
     copyTextToClipboard(finalString);
   });
 
   addConfiguration('loveandradio', '.fourblog.blogger', function () {
     var finalString = ""
+    var titles = document.querySelectorAll(".fourblog h3 a");
+    var names = document.querySelectorAll(".fourblog .teaser");
     for (var i = 0; i < 5; i++) { 
-      finalString += "# " + document.querySelectorAll(".fourblog h3 a")[i].textContent.trim() + "\n\n" 
+      finalString += "# " + titles[i].textContent.trim() + "\n\n" + names[i].textContent.trim() + "\n\n";
     }
     copyTextToClipboard(finalString);
   })
@@ -107,9 +109,9 @@ function createConfigurations() {
     var titles = document.querySelectorAll(".entry-title a")
 
     var finalString = "";
-    for (var i = 0; i < 15; i++) { 
+    for (var i = 0; i < 5; i++) { 
       var title = titles[i].textContent.trim();
-      finalString += "## " + title + "\n";
+      finalString += "# " + title + "\n";
     }
     copyTextToClipboard(finalString);
   });
@@ -122,7 +124,7 @@ function createConfigurations() {
     for (var i = 1; i < 5; i++) { 
       var index = length - i;
       var title = titles[index].textContent.trim();
-      finalString += "## " + title + "\n";
+      finalString += "# " + title + "\n";
     }
   });
 }
