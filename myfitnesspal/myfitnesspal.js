@@ -18,7 +18,7 @@ function analyzeReport(weekData, goal) {
 	var caloriesEaten = 0
 	var goalCalories = 0
 	var haveISeenSunday = false
-	for (var i; i < weekData.length; i ++) {
+	for (var i = 0; i < weekData.length; i ++) {
 		var day = dateParse(weekData[i]["date"])
 		if (day.getDay() == 0) {
 			haveISeenSunday = true
@@ -26,7 +26,7 @@ function analyzeReport(weekData, goal) {
 		if (haveISeenSunday) {
 			var calories = weekData[i].total
 			if (calories > 0) {
-				caloriesEaten += caloriesEaten
+				caloriesEaten += calories
 				goalCalories += goal
 			}
 		}
