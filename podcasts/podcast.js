@@ -68,11 +68,13 @@ function createConfigurations() {
   });
 
   addConfiguration('americanlife', '#block-system-main', function () {
+    var episodeNumbers = document.querySelectorAll(".content article .field-name-field-episode-number a.goto-episode");
     var labels = document.querySelectorAll(".content article h2 a");
     var finalString = '';
     for (var i = 0; i < 5; i++) {
+      var episodeNumber = episodeNumbers[i].textContent.trim();
       var label = labels[i].textContent.trim();
-      finalString += "# " + label + "\n";
+      finalString += "# " + episodeNumber + ": " + label + "\n";
     }
     copyTextToClipboard(finalString);
   });
