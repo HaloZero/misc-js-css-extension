@@ -1,3 +1,5 @@
+window.debugFitness = false
+
 $(function() {
 	if (window.location.href.match("diary") != null) {
 		fetchReport()
@@ -5,11 +7,16 @@ $(function() {
 });
 
 function fetchReport() {
-	console.log("Fetching report")
+	if (window.debugFitness) {
+		console.log("Fetching report")
+	}
 	$.get("/reports/results/nutrition/Net%20Calories/7.json?report_name=Net%20Calories&")
 		.done(function (result) {
 			var goal = parseInt(result["goal"])
 			var data = result["data"]
+			if (window.debugFitness) {
+				console.log(result)
+			}
 			analyzeReport(data, goal)
 		})
 }
@@ -25,9 +32,13 @@ function analyzeReport(weekData, goal) {
 		}
 		if (haveISeenSunday) {
 			var calories = weekData[i].total
-			if (calories > 0) {
+			if (calories > 1000) {
 				caloriesEaten += calories
 				goalCalories += goal
+			}
+			if (window.debugFitness) {
+				console.log("Adding information from " + weekData[i]["date"])
+				console.log("Adding calories " + calories)
 			}
 		}
 	}
@@ -37,8 +48,10 @@ function analyzeReport(weekData, goal) {
 	container.append("<br>")
 	container.append($("<span>").text('Calories Eaten are ' + caloriesEaten))
 	container.append($("<span>").text('Calories Goal are ' + goalCalories))
-	container.append($("<span>").text('Net Calories are ' + netCalories))
-	$('.diary').append(container)
+	container.append($("<span id='my-net-calories'>").text('Net Calories are ' + netCalories))
+	$('#main').prepend(container)
+	var color = netCalories > 0 ? 'green' : 'red'
+	$('#my-net-calories').css('color', color)
 }
 
 function dateParse(dateString) {
