@@ -4,12 +4,14 @@ var configurations = []
 
 function onLoad() {
   createConfigurations()
+  checkConfigs()
+}
 
+function checkConfigs() {
   var domain = window.location.hostname
-  console.log('checking configurations');
+  console.log("checking configurations");
   for (index in configurations) {
     var configuration = configurations[index]
-    console.log("checking configuration", configuration.domain)
     if (domain.includes(configuration.domain)) {
       var matchingConfiguration = configuration
       console.log("Creating label for ", configuration.domain)
@@ -25,20 +27,39 @@ function onLoad() {
       })
     }
   }
+
+  setTimeout(function () { checkLater() }, 500);
+}
+
+// helper function to deal with radio lab's async refresho
+function checkLater() {
+  var domain = window.location.hostname
+  for (index in configurations) {
+    var configuration = configurations[index]
+    if (domain.includes(configuration.domain)) {
+      var wrapCheck = configuration.containerId + " #copyText"
+      if ($(wrapCheck).length == 0) {
+        console.log("Couldn't find it, trying again")
+        checkConfigs()
+      } else {
+        console.log("True success")
+      }
+    }
+  }
 }
 
 function addConfiguration(domain, containerId, completion) {
   var configuration = {
-    'domain': domain,
-    'containerId': containerId,
-    'completion': completion
+    "domain": domain,
+    "containerId": containerId,
+    "completion": completion
   }
   configurations.push(configuration)
 }
 
 function createConfigurations() {
   console.log("create configurations");
-  addConfiguration('99percent', '.post-blocks', function () {
+  addConfiguration("99percent", ".post-blocks", function () {
     var labels = document.querySelectorAll(".post-label");
     var titles = document.querySelectorAll(".post-title");
 
@@ -46,31 +67,32 @@ function createConfigurations() {
     for (var i = 0; i < 5; i++) {
       var label = labels[i].textContent.trim().replace("Episode ", "");
       var title = titles[i].textContent.trim();
-      finalString += "#" + label + " " + title + "\n";
+      finalString += "# " + label + " " + title + "\n";
     }
     copyTextToClipboard(finalString);
   });
 
-  addConfiguration('stuffyoushouldknow', '#archive-featured', function () {
-    var finalString = '';
+  addConfiguration("stuffyoushouldknow", "#archive-featured", function () {
+    var finalString = "";
     for (var i = 0; i < 5; i++) {
       finalString += "# " + document.querySelectorAll(".h4 a")[i].textContent.trim() + "\n\n";
     }
     copyTextToClipboard(finalString);
   });
 
-  addConfiguration('gimletmedia', '#primary', function () {
-    var finalString = '';
+  addConfiguration("gimletmedia", "#primary", function () {
+    var finalString = "";
+    var elements = document.querySelectorAll("#all-episodes .episode .title-header h2")
     for (var i = 0; i < 5; i++) {
-      finalString += document.querySelectorAll(".list__item .list__item__title a")[i].textContent.trim() + "\n";
+      finalString += elements[i].textContent.trim() + "\n";
     }
     copyTextToClipboard(finalString);
   });
 
-  addConfiguration('americanlife', '#block-system-main', function () {
+  addConfiguration("americanlife", "#block-system-main", function () {
     var episodeNumbers = document.querySelectorAll(".content article .field-name-field-episode-number a.goto-episode");
     var labels = document.querySelectorAll(".content article h2 a");
-    var finalString = '';
+    var finalString = "";
     for (var i = 0; i < 5; i++) {
       var episodeNumber = episodeNumbers[i].textContent.trim();
       var label = labels[i].textContent.trim();
@@ -79,25 +101,26 @@ function createConfigurations() {
     copyTextToClipboard(finalString);
   });
 
-  addConfiguration('thisiscriminal', '.episode-grid', function () {
+  addConfiguration("thisiscriminal", ".episode-grid", function () {
     var finalString = ""
     var titles = document.querySelectorAll(".episode a:nth-child(2)")
     for (var i = 0; i < 5; i++) { 
         var title = titles[i].textContent.trim().replace("Episode ", "")
-        finalString += "# " + title + "\n"
+        var episodeNumber = titles[i].href.match("episode-(\\d+)")[1]
+        finalString += "# " + episodeNumber + ": " + title + "\n"
     }
     copyTextToClipboard(finalString);
   });
 
-  addConfiguration('radiolab', '#series-main', function () {
+  addConfiguration("wnycstudios", ".page-wrapper main", function () {
     var finalString = ""
     for (var i = 0; i < 5; i++) { 
-      finalString += "# " + document.querySelectorAll(".series-item .title a")[i].textContent.trim() + "\n\n";
+      finalString += "# " + document.querySelectorAll(".episode-tease__title a")[i].textContent.trim() + "\n\n";
     }
     copyTextToClipboard(finalString);
   });
 
-  addConfiguration('loveandradio', '.fourblog.blogger', function () {
+  addConfiguration("loveandradio", ".fourblog.blogger", function () {
     var finalString = ""
     var titles = document.querySelectorAll(".fourblog h3 a");
     var names = document.querySelectorAll(".fourblog .teaser");
@@ -107,7 +130,7 @@ function createConfigurations() {
     copyTextToClipboard(finalString);
   })
 
-  addConfiguration('lorepodcast', '.blog-list', function () {
+  addConfiguration("lorepodcast", ".blog-list", function () {
     var titles = document.querySelectorAll(".entry-title a")
 
     var finalString = "";
@@ -118,7 +141,7 @@ function createConfigurations() {
     copyTextToClipboard(finalString);
   });
 
-  addConfiguration('imaginaryworldspodcast', '.wsb-navigation-rendered-top-level-menu', function() {
+  addConfiguration("imaginaryworldspodcast", ".wsb-navigation-rendered-top-level-menu", function() {
     var titles = document.querySelectorAll(".wsb-navigation-rendered-top-level-menu a");
 
     var finalString = "";
@@ -128,32 +151,33 @@ function createConfigurations() {
       var title = titles[index].textContent.trim();
       finalString += "# " + title + "\n";
     }
+    copyTextToClipboard(finalString);
   });
 }
 
 function copyTextToClipboard(text) {
   console.log(text)
   var textArea = document.createElement("textarea");
-  textArea.style.position = 'fixed';
+  textArea.style.position = "fixed";
   textArea.style.top = 0;
   textArea.style.left = 0;
-  textArea.style.width = '2em';
-  textArea.style.height = '2em';
+  textArea.style.width = "2em";
+  textArea.style.height = "2em";
   textArea.style.padding = 0;
-  textArea.style.border = 'none';
-  textArea.style.outline = 'none';
-  textArea.style.boxShadow = 'none';
-  textArea.style.background = 'transparent';
+  textArea.style.border = "none";
+  textArea.style.outline = "none";
+  textArea.style.boxShadow = "none";
+  textArea.style.background = "transparent";
   textArea.value = text;
   document.body.appendChild(textArea);
   textArea.select();
 
   try {
-    var successful = document.execCommand('copy');
-    var msg = successful ? 'successful' : 'unsuccessful';
-    console.log('Copying text command was ' + msg);
+    var successful = document.execCommand("copy");
+    var msg = successful ? "successful" : "unsuccessful";
+    console.log("Copying text command was " + msg);
   } catch (err) {
-    console.log('Oops, unable to copy');
+    console.log("Oops, unable to copy");
   }
 
   document.body.removeChild(textArea);
