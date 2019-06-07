@@ -1,4 +1,4 @@
-window.debugFitness = false
+window.debugFitness = true
 
 $(function() {
 	if (window.location.href.match("diary") != null) {
@@ -30,15 +30,24 @@ function analyzeReport(weekData, goal) {
 		if (day.getDay() == 0) {
 			haveISeenSunday = true
 		}
+
 		if (haveISeenSunday) {
 			var calories = weekData[i].total
-			if (calories > 1000) {
-				caloriesEaten += calories
-				goalCalories += goal
-			}
 			if (window.debugFitness) {
 				console.log("Adding information from " + weekData[i]["date"])
 				console.log("Adding calories " + calories)
+			}
+
+			if (calories > 0) {
+				caloriesEaten += calories
+				goalCalories += goal
+			} else if (window.debugFitness) {
+				console.log("Calories unsufficient to add for " + weekData[i]["date"])
+			}
+
+			if (window.debugFitness) {
+				console.log("Total calories is now " + caloriesEaten)
+				console.log("Goal is now " + goalCalories)
 			}
 		}
 	}
@@ -52,6 +61,10 @@ function analyzeReport(weekData, goal) {
 	$('#main').prepend(container)
 	var color = netCalories > 0 ? 'green' : 'red'
 	$('#my-net-calories').css('color', color)
+
+	if (window.debugFitness) {
+		console.log("totl calorie eaten is " + caloriesEaten);
+	}
 }
 
 function dateParse(dateString) {
