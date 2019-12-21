@@ -43,7 +43,8 @@
     "matches" : ["*://*.thisamericanlife.org/*", "*://*.gimletmedia.com/*",
       "*://*.stuffyoushouldknow.com/*", "*://*.99percentinvisible.org/*",
       "*://*.thisiscriminal.com/*", "*://*.loveandradio.org/*", "*://*.lorepodcast.com/*",
-      "*://*.radiolab.org/*", "*://*.imaginaryworldspodcast.org/*", "*://*.wnycstudios.org/*"],
+      "*://*.radiolab.org/*", "*://*.imaginaryworldspodcast.org/*", "*://*.wnycstudios.org/*",
+      "*://*.iheart.com/*"],
     "js" : ["utils/jquery.js", "podcasts/podcast.js"],
     "css" : []
   },

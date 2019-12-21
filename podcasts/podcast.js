@@ -28,7 +28,7 @@ function checkConfigs() {
     }
   }
 
-  setTimeout(function () { checkLater() }, 500);
+  setTimeout(function () { checkLater() }, 1500);
 }
 
 // helper function to deal with radio lab's async refresho
@@ -39,10 +39,10 @@ function checkLater() {
     if (domain.includes(configuration.domain)) {
       var wrapCheck = configuration.containerId + " #copyText"
       if ($(wrapCheck).length == 0) {
-        console.log("Couldn't find it, trying again")
+        console.log("Couldn't find the podcast copy link, trying again")
         checkConfigs()
       } else {
-        console.log("True success")
+        console.log("Found pod cast copy link")
       }
     }
   }
@@ -72,11 +72,17 @@ function createConfigurations() {
     copyTextToClipboard(finalString);
   });
 
-  addConfiguration("stuffyoushouldknow", "#archive-featured", function () {
+  addConfiguration("iheart", '*[data-test="podcast-profile-section-left"] div:first', function () {
     var finalString = "";
+    var elements = 
+      $('*[data-test="podcast-episode-card"] a span span span span span')
+      .filter(function (index) { 
+        return $(this).text().length > 3
+      })
     for (var i = 0; i < 5; i++) {
-      finalString += "# " + document.querySelectorAll(".h4 a")[i].textContent.trim() + "\n\n";
+      finalString += "# " + elements[i].textContent.trim() + "\n\n";
     }
+
     copyTextToClipboard(finalString);
   });
 
