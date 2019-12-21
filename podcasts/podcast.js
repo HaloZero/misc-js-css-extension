@@ -112,7 +112,11 @@ function createConfigurations() {
     var titles = document.querySelectorAll(".episode a:nth-child(2)")
     for (var i = 0; i < 5; i++) { 
         var title = titles[i].textContent.trim().replace("Episode ", "")
-        var episodeNumber = titles[i].href.match("episode-(\\d+)")[1]
+        var episodeMatch = titles[i].href.match("episode-(\\d+)")
+        var episodeNumber = "Bonus"
+        if (episodeMatch) {
+          episodeNumber = episodeMatch[1]
+        }
         finalString += "# " + episodeNumber + ": " + title + "\n"
     }
     copyTextToClipboard(finalString);
