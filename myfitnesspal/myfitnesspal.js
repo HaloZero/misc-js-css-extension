@@ -1,6 +1,6 @@
 window.debugFitness = false
-window.showTable = false
-window.showNetCalories = false
+window.showTable = true
+window.showNetCalories = true
 
 $(function() {
   if (window.location.href.match("diary") != null) {
@@ -66,7 +66,7 @@ function analyzeReport(weekData, goal) {
         haveISeenSunday = true
       }
       if (haveISeenSunday) {
-        weekData[i]["net-calories"] = (weekData[i].total - goal)
+        weekData[i]["net-calories"] = -(weekData[i].total - goal)
         truncatedData.push(weekData[i])
       }
     }
