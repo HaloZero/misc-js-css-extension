@@ -79,7 +79,7 @@ function createConfigurations() {
       .filter(function (index) { 
         return $(this).text().length > 3
       })
-    for (var i = 0; i < 5; i++) {
+    for (var i = 0; i < 10; i++) {
       finalString += "# " + elements[i].textContent.trim() + "\n\n";
     }
 
@@ -159,6 +159,20 @@ function createConfigurations() {
     for (var i = 1; i < 5; i++) { 
       var index = length - i;
       var title = titles[index].textContent.trim();
+      finalString += "# " + title + "\n";
+    }
+    copyTextToClipboard(finalString);
+  });
+
+  addConfiguration("eastbayyesterday", ".wsb-navigation-rendered-top-level-menu", function() {
+    var titles = document.querySelectorAll(".entry-title a");
+    var arrayNodes = [].slice.call(titles).reverse()
+
+    var finalString = "";
+    var length = titles.length
+    for (var i = 1; i < length; i++) { 
+      var index = length - i;
+      var title = arrayNodes[index].textContent.trim();
       finalString += "# " + title + "\n";
     }
     copyTextToClipboard(finalString);
