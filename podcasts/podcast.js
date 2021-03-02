@@ -164,7 +164,7 @@ function createConfigurations() {
     copyTextToClipboard(finalString);
   });
 
-  addConfiguration("eastbayyesterday", ".wsb-navigation-rendered-top-level-menu", function() {
+  addConfiguration("eastbayyesterday", ".row.episode-cards", function() {
     var titles = document.querySelectorAll(".entry-title a");
     var arrayNodes = [].slice.call(titles).reverse()
 

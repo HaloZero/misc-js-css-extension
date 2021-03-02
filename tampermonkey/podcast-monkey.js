@@ -15,6 +15,7 @@
 // @match        *://*.imaginaryworldspodcast.org/*
 // @match        *://*.wnycstudios.org/*
 // @match        *://*.iheart.com/*
+// @match        *://*.eastbayyesterday.com/*
 // @require      http://code.jquery.com/jquery-latest.js
 
 // ==/UserScript==
