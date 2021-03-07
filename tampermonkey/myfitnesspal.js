@@ -1,11 +1,24 @@
+// ==UserScript==
+// @name         MyFitnessPal
+// @namespace    https://www.myfitnesspal.com/food/diary
+// @version      0.1
+// @description  Support showing tables for myfitness pal
+// @author       You
+// @match        https://www.myfitnesspal.com/food/diary*
+// @grant        GM_addStyle
+// @require      http://code.jquery.com/jquery-3.4.1.min.js
+// ==/UserScript==
+
 window.debugFitness = false
 window.showTable = true
 window.showNetCalories = true
 
 $(function() {
-  if (window.location.href.match("diary") != null) {
-    fetchReport()
-  }
+    GM_addStyle(".calorie-goal { font-size: 15px; font-weight: bold; margin: 10px 0; }")
+    GM_addStyle(".calorie-goal span { padding-right: 10px; }")
+    if (window.location.href.match("diary") != null) {
+        fetchReport()
+    }
 });
 
 function fetchReport() {
@@ -56,7 +69,7 @@ function analyzeReport(weekData, goal) {
     var color = netCalories > 0 ? 'green' : 'red'
     $('#my-net-calories').css('color', color)
   }
-  
+
   if (window.showTable) {
     var truncatedData = []
     haveISeenSunday = false
@@ -71,9 +84,9 @@ function analyzeReport(weekData, goal) {
       }
     }
     var table = createTable(truncatedData)
-    $('#main').prepend(table)  
+    $('#main').prepend(table)
   }
-  
+
 
   if (window.debugFitness) {
     console.log("total calorie eaten is " + caloriesEaten);

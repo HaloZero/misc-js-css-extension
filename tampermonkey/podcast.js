@@ -1,3 +1,25 @@
+// ==UserScript==
+// @name         Podcast
+// @namespace    Podcasting
+// @version      0.1
+// @description  Podcast script
+// @author       You
+// @match        *://*.thisamericanlife.org/*
+// @match        *://*.gimletmedia.com/*
+// @match        *://*.stuffyoushouldknow.com/*
+// @match        *://*.99percentinvisible.org/*
+// @match        *://*.thisiscriminal.com/*
+// @match        *://*.loveandradio.org/*
+// @match        *://*.lorepodcast.com/*
+// @match        *://*.radiolab.org/*
+// @match        *://*.imaginaryworldspodcast.org/*
+// @match        *://*.wnycstudios.org/*
+// @match        *://*.iheart.com/*
+// @match        *://*.eastbayyesterday.com/*
+// @require      http://code.jquery.com/jquery-latest.js
+
+// ==/UserScript==
+
 $(onLoad);
 
 var configurations = []
@@ -74,9 +96,9 @@ function createConfigurations() {
 
   addConfiguration("iheart", '*[data-test="podcast-profile-section-left"] div:first', function () {
     var finalString = "";
-    var elements = 
+    var elements =
       $('*[data-test="podcast-episode-card"] a span span span span span')
-      .filter(function (index) { 
+      .filter(function (index) {
         return $(this).text().length > 3
       })
     for (var i = 0; i < 10; i++) {
@@ -110,7 +132,7 @@ function createConfigurations() {
   addConfiguration("thisiscriminal", ".episode-grid", function () {
     var finalString = ""
     var titles = document.querySelectorAll(".episode a:nth-child(2)")
-    for (var i = 0; i < 5; i++) { 
+    for (var i = 0; i < 5; i++) {
         var title = titles[i].textContent.trim().replace("Episode ", "")
         var episodeMatch = titles[i].href.match("episode-(\\d+)")
         var episodeNumber = "Bonus"
@@ -124,7 +146,7 @@ function createConfigurations() {
 
   addConfiguration("wnycstudios", ".page-wrapper main", function () {
     var finalString = ""
-    for (var i = 0; i < 5; i++) { 
+    for (var i = 0; i < 5; i++) {
       finalString += "# " + document.querySelectorAll(".episode-tease__title a")[i].textContent.trim() + "\n\n";
     }
     copyTextToClipboard(finalString);
@@ -134,7 +156,7 @@ function createConfigurations() {
     var finalString = ""
     var titles = document.querySelectorAll(".fourblog h3 a");
     var names = document.querySelectorAll(".fourblog .teaser");
-    for (var i = 0; i < 5; i++) { 
+    for (var i = 0; i < 5; i++) {
       finalString += "# " + titles[i].textContent.trim() + "\n\n" + names[i].textContent.trim() + "\n\n";
     }
     copyTextToClipboard(finalString);
@@ -144,7 +166,7 @@ function createConfigurations() {
     var titles = document.querySelectorAll(".entry-title a")
 
     var finalString = "";
-    for (var i = 0; i < 5; i++) { 
+    for (var i = 0; i < 5; i++) {
       var title = titles[i].textContent.trim();
       finalString += "# " + title + "\n";
     }
@@ -156,7 +178,7 @@ function createConfigurations() {
 
     var finalString = "";
     var length = titles.length
-    for (var i = 1; i < 5; i++) { 
+    for (var i = 1; i < 5; i++) {
       var index = length - i;
       var title = titles[index].textContent.trim();
       finalString += "# " + title + "\n";
@@ -170,7 +192,7 @@ function createConfigurations() {
 
     var finalString = "";
     var length = titles.length
-    for (var i = 1; i < length; i++) { 
+    for (var i = 1; i < length; i++) {
       var index = length - i;
       var title = arrayNodes[index].textContent.trim();
       finalString += "# " + title + "\n";
