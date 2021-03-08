@@ -15,6 +15,7 @@
 // @match        *://*.imaginaryworldspodcast.org/*
 // @match        *://*.wnycstudios.org/*
 // @match        *://*.iheart.com/*
+// @match        *://*.kqed.org/podcasts/*
 // @match        *://*.eastbayyesterday.com/*
 // @require      http://code.jquery.com/jquery-latest.js
 
@@ -81,6 +82,7 @@ function addConfiguration(domain, containerId, completion) {
 
 function createConfigurations() {
   console.log("create configurations");
+  // 99% Invisible
   addConfiguration("99percent", ".post-blocks", function () {
     var labels = document.querySelectorAll(".post-label");
     var titles = document.querySelectorAll(".post-title");
@@ -94,6 +96,7 @@ function createConfigurations() {
     copyTextToClipboard(finalString);
   });
 
+  // SYSK
   addConfiguration("iheart", '*[data-test="podcast-profile-section-left"] div:first', function () {
     var finalString = "";
     var elements =
@@ -108,6 +111,7 @@ function createConfigurations() {
     copyTextToClipboard(finalString);
   });
 
+  // Reply All
   addConfiguration("gimletmedia", "#primary", function () {
     var finalString = "";
     var elements = document.querySelectorAll("#all-episodes .episode .title-header h2")
@@ -117,6 +121,7 @@ function createConfigurations() {
     copyTextToClipboard(finalString);
   });
 
+  // This American Life
   addConfiguration("americanlife", "#block-system-main", function () {
     var episodeNumbers = document.querySelectorAll(".content article .field-name-field-episode-number a.goto-episode");
     var labels = document.querySelectorAll(".content article h2 a");
@@ -129,6 +134,7 @@ function createConfigurations() {
     copyTextToClipboard(finalString);
   });
 
+  // Criminal
   addConfiguration("thisiscriminal", ".episode-grid", function () {
     var finalString = ""
     var titles = document.querySelectorAll(".episode a:nth-child(2)")
@@ -144,6 +150,7 @@ function createConfigurations() {
     copyTextToClipboard(finalString);
   });
 
+  // Radio Lab
   addConfiguration("wnycstudios", ".page-wrapper main", function () {
     var finalString = ""
     for (var i = 0; i < 5; i++) {
@@ -152,6 +159,7 @@ function createConfigurations() {
     copyTextToClipboard(finalString);
   });
 
+  // Love & Radio
   addConfiguration("loveandradio", ".fourblog.blogger", function () {
     var finalString = ""
     var titles = document.querySelectorAll(".fourblog h3 a");
@@ -162,17 +170,7 @@ function createConfigurations() {
     copyTextToClipboard(finalString);
   })
 
-  addConfiguration("lorepodcast", ".blog-list", function () {
-    var titles = document.querySelectorAll(".entry-title a")
-
-    var finalString = "";
-    for (var i = 0; i < 5; i++) {
-      var title = titles[i].textContent.trim();
-      finalString += "# " + title + "\n";
-    }
-    copyTextToClipboard(finalString);
-  });
-
+  // Imaginary Worlds
   addConfiguration("imaginaryworldspodcast", ".wsb-navigation-rendered-top-level-menu", function() {
     var titles = document.querySelectorAll(".wsb-navigation-rendered-top-level-menu a");
 
@@ -186,17 +184,36 @@ function createConfigurations() {
     copyTextToClipboard(finalString);
   });
 
+  // Sold Out: KQED
+  addConfiguration("kqed", ".components-List-___List__list__cardsRecent", function() {
+    var titles = document.querySelectorAll("article span.components-Card-components-components-TextBox-___TextBox__box_Title");
+
+    var finalString = "";
+    var length = titles.length
+    for (var i = 1; i < titles.length; i++) {
+      var title = titles[i].textContent.trim();
+      finalString += "# " + title + "\n";
+    }
+
+    copyTextToClipboard(finalString);
+  });
+
+  // East Bay Yesterday
   addConfiguration("eastbayyesterday", ".row.episode-cards", function() {
     var titles = document.querySelectorAll(".entry-title a");
-    var arrayNodes = [].slice.call(titles).reverse()
+    var summaries = document.querySelectorAll(".entry-summary")
+    var reversedTitles = [].slice.call(titles).reverse()
+    var reversedSummaries = [].slice.call(summaries).reverse()
 
     var finalString = "";
     var length = titles.length
     for (var i = 1; i < length; i++) {
       var index = length - i;
-      var title = arrayNodes[index].textContent.trim();
-      finalString += "# " + title + "\n";
+      var title = reversedTitles[index].textContent.trim();
+      var summary = reversedSummaries[index].textContent.trim();
+      finalString += "# " + title + ": " + summary + "\n";
     }
+
     copyTextToClipboard(finalString);
   });
 }
