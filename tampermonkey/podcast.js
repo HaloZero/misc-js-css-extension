@@ -104,7 +104,7 @@ function createConfigurations() {
       .filter(function (index) {
         return $(this).text().length > 3
       })
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < elements.length; i++) {
       finalString += "# " + elements[i].textContent.trim() + "\n\n";
     }
 
