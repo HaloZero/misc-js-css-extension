@@ -12,6 +12,7 @@
 window.debugFitness = false
 window.showTable = true
 window.showNetCalories = true
+window.startOnSunday = false
 
 $(function() {
     GM_addStyle(".calorie-goal { font-size: 15px; font-weight: bold; margin: 10px 0; }")
@@ -39,13 +40,16 @@ function fetchReport() {
 function analyzeReport(weekData, goal) {
   var caloriesEaten = 0
   var goalCalories = 0
-  var haveISeenSunday = false
+  var haveISeenStartOfWeek = false
+
+  // calculate net calories
+  var startWeekdayIndex = window.startOnSunday ? 0 : 1
   for (var i = 0; i < weekData.length; i++) {
     var day = dateParse(weekData[i]["date"])
-    if (day.getDay() == 0) {
-      haveISeenSunday = true
+    if (day.getDay() == startWeekdayIndex) {
+      haveISeenStartOfWeek = true
     }
-    if (haveISeenSunday) {
+    if (haveISeenStartOfWeek) {
       var calories = weekData[i].total
       if (calories > 500) {
         caloriesEaten += calories
@@ -59,6 +63,19 @@ function analyzeReport(weekData, goal) {
   }
 
   if (window.showNetCalories) {
+    showNetCalories(goalCalories, caloriesEaten)
+  }
+
+  if (window.showTable) {
+    showCalorieTable(weekData, startWeekdayIndex)
+  }
+
+
+  if (window.debugFitness) {
+    console.log("total calorie eaten is " + caloriesEaten);
+  }
+
+  function showNetCalories(goalCalories, caloriesEaten) {
     var netCalories = goalCalories - caloriesEaten;
     var container = $("<div class='calorie-goal'>")
     container.append("<br>")
@@ -70,26 +87,21 @@ function analyzeReport(weekData, goal) {
     $('#my-net-calories').css('color', color)
   }
 
-  if (window.showTable) {
+  function showCalorieTable(weekData, startWeekdayIndex) {
     var truncatedData = []
-    haveISeenSunday = false
+    haveISeenStartOfWeek = false
     for (var i = 0; i < weekData.length; i++) {
       var day = dateParse(weekData[i]["date"])
-      if (day.getDay() == 0) {
-        haveISeenSunday = true
+      if (day.getDay() == startWeekdayIndex) {
+        haveISeenStartOfWeek = true
       }
-      if (haveISeenSunday) {
+      if (haveISeenStartOfWeek) {
         weekData[i]["net-calories"] = -(weekData[i].total - goal)
         truncatedData.push(weekData[i])
       }
     }
     var table = createTable(truncatedData)
     $('#main').prepend(table)
-  }
-
-
-  if (window.debugFitness) {
-    console.log("total calorie eaten is " + caloriesEaten);
   }
 }
 
