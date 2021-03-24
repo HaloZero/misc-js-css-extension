@@ -4,11 +4,9 @@
 // @version      0.5
 // @description  Block sites (such as Baidu, etc.) You can edit the block list in the script.
 // @author       Blah
-// @match        https://www.wsj.com/*
-// @match        https://www.nytimes.com/*
 // @match        https://www.sfgate.com/*
+// @match        https://www.foxnews.com/*
 // @match        https://www.fivethirtyeight.com/*
-// @match        https://www.twitter.com/*
 // @match        https://finance.google.com/*
 // @require      https://code.jquery.com/jquery-3.5.1.slim.min.js
 // ==/UserScript==

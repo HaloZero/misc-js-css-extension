@@ -5,8 +5,8 @@
 // @description  Block sites (such as Baidu, etc.) You can edit the block list in the script.
 // @author       Blah
 // @match        https://www.doordash.com/*
-// @match        https://www.ubereats.com/*
 // @match        https://www.grubhub.com/*
+// @match        https://www.teamblind.com/*
 // @require      https://code.jquery.com/jquery-3.5.1.slim.min.js
 // ==/UserScript==
 
