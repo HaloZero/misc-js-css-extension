@@ -6,6 +6,7 @@
 // @author       Blah
 // @match        https://www.sfgate.com/*
 // @match        https://www.foxnews.com/*
+// @match        https://www.reddit.com/r/Conservative/*
 // @match        https://www.fivethirtyeight.com/*
 // @match        https://finance.google.com/*
 // @require      https://code.jquery.com/jquery-3.5.1.slim.min.js
