@@ -7,6 +7,7 @@
 // @match        https://www.doordash.com/*
 // @match        https://www.grubhub.com/*
 // @match        https://www.teamblind.com/*
+// @match        https://www.redfin.com/*
 // @require      https://code.jquery.com/jquery-3.5.1.slim.min.js
 // ==/UserScript==
 
