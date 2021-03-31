@@ -100,7 +100,7 @@ function createConfigurations() {
   addConfiguration("iheart", '*[data-test="podcast-profile-section-left"] div:first', function () {
     var finalString = "";
     var elements =
-      $('*[data-test="podcast-episode-card"] a span span span span span')
+      $('*[data-test="podcast-episode-name"] p span')
       .filter(function (index) {
         return $(this).text().length > 3
       })
