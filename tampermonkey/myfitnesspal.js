@@ -145,3 +145,26 @@ function dateParse(dateString) {
   var newString = dateString + "/" + year
   return new Date(newString)
 }
+
+function parseLogInfo() {
+  // https://www.myfitnesspal.com/reports/printable_diary
+  var $totalCalories = $(".table0#food tfoot tr td:nth-child(2)");
+  var $totalExercise = $(".table0#excercise tfoot tr td:nth-child(2)");
+
+  var totalExerciseIndex = 0;
+  var totalsString = ""
+  for (var i = 0; i < $totalCalories.length; i++) {
+      var totalString = $totalCalories[i].textContent.replace(",", "")
+      var $nextElement = $($totalCalories[i]).closest("#food").next()
+      console.log($nextElement)
+      if ($nextElement.hasClass("table0")) {
+        var exerciseString = $totalExercise[totalExerciseIndex].textContent.replace(",", "")
+        totalExerciseIndex += 1
+        var newString = (parseInt(totalString) - parseInt(exerciseString)).toString()
+        totalString = newString
+      }
+
+      totalsString += totalString
+      totalsString += ","
+  }
+}
