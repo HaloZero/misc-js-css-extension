@@ -216,6 +216,21 @@ function createConfigurations() {
 
     copyTextToClipboard(finalString);
   });
+
+  // Ologies
+  addConfiguration("ologies", ".Main-content", function () {
+    var titles = document.querySelectorAll(".BlogList-item-title");
+
+    var finalString = "";
+    var length = titles.length
+    for (var i = 1; i < length; i++) {
+      var index = length - i;
+      var title = reversedTitles[index].textContent.trim();
+      finalString += "# " + title + "\n";
+    }
+
+    copyTextToClipboard(finalString);
+  })
 }
 
 function copyTextToClipboard(text) {
