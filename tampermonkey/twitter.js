@@ -11,11 +11,15 @@
 
 $(function() {
     'use strict';
-    console.log("Twitter!")
     setInterval(hideWhoToFollow, 1000);
+    setInterval(topicToFollow, 1000);
 });
 
 // Hides the "Who to follow section" on Twitter
 function hideWhoToFollow() {
     $("aside[aria-label='Who to follow']").parent().hide();
+};
+
+function topicToFollow() {
+    $("div[aria-label='Timeline: ']").parent().hide()
 };

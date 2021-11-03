@@ -9,6 +9,7 @@
 // ==/UserScript==
 
 function replaceLinks() {
+	console.log("replacing links")
 	var articles = document.querySelectorAll("#article_list .article_item")
 	for (var i = 0; i < articles.length; i++) {
 		var article = articles[i]
@@ -17,4 +18,6 @@ function replaceLinks() {
 	}
 }
 
-setTimeout(replaceLinks, 1000)
+window.addEventListener("load", function() {
+	replaceLinks()
+});

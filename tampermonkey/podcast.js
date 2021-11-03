@@ -97,7 +97,7 @@ function createConfigurations() {
   });
 
   // SYSK
-  addConfiguration("iheart", '*[data-test="podcast-profile-section-left"] div:first', function () {
+  addConfiguration("iheart", '*[data-test="podcast-profile-body"] div:first', function () {
     var finalString = "";
     var elements =
       $('*[data-test="podcast-episode-name"] p span')
